@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Welcome,
+    <span style="color:orange">{{ session.username }}</span>
+  </h1>
+  <br>
+  <h4>
+    Trending Movies
+    <small class="text-muted">
+      (Twitter)
+    </small>
+  </h4>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Movie</th>
+        <th scope="col">%</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if not movies_list %}
+        <tr>
+            <th scope="row"></th>
+            <td>No movies to show</td>
+            <td></td>
+        </tr>
+        {% else %}
+        {% for movie in movies_list %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td style="color:orange; font-weight:bold">{{ movie.name }}</td>
+            <td>{{ movie.percent }}%</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+  </table>
+{% endblock %}

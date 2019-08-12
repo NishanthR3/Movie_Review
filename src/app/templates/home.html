@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="jumbotron text-center">
+    <h1>Welcome</h1>
+    <p class="lead">
+      Get all the latest information about trending movies and shows
+      <br/>
+    </p>
+    {% if not session.logged_in %}
+      Register as a theatre <a href="/theatre_register">here</a>.
+      Already registered? Login <a href="/theatre_login">here</a>.
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>
+    Add show
+      <small class="text-muted">(Closed Down)</small>
+  </h1>
+  <br/>
+  {% if not movies_list %}
+    <h2>
+      <small class="text-muted">No Movies</small>
+    </h2>
+  {% else %}
+  
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Choose a movie</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="movie_id" value="{{ request.form.movie_id }}">
+          {% for movie in movies_list %}
+            <option value="{{ movie.movie_id }}">{{ movie.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <br/>
+      
+      <label for="datetime">Choose date and time</label>
+      <input type="text" id="datetime" name="show_time" value="{{ request.form.show_time }}" required/>
+    
+      <br/>
+
+      <button type="submit" class="btn btn-primary">Add show</button>
+
+    </form>
+
+    <script>
+      $(function() {
+        $('#datetime').datetimepicker({
+          footer: true,
+          modal: true
+        });
+      });
+    </script>
+
+  {% endif %}
+
+{% endblock %}
